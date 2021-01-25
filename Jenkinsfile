@@ -8,6 +8,7 @@ pipeline {
   environment {
     ARTIFACTOR = "${env.BUILD_NUMBER}.zip"
     SLACK_MESSAGE = "Job '${env.JOB_NAME}' Build ${env.BUILD_NUMBER}"
+    MY_BRANCH = 'orgin/${env.GIT_BRANCH}'.split('/')[1]
   }
   parameters {
     string(name: 'SLACK_CHANNEL', defaultValue: '#deploys', description: '')
@@ -27,8 +28,8 @@ pipeline {
         sh "echo ${env.BUILD_NUMBER}"
         sh "echo ${env.ARTIFACTOR}"
         sh "echo ${env.SLACK_MESSAGE}"
-        sh "echo ${env.BRANCH_NAME}"
         sh "echo ${env.GIT_BRANCH}"
+        sh "echo ${env.MY_BRANCH}"
         sh "touch ${ARTIFACTOR}"
         script {
           def AMI_ID = sh(returnStdout: true, script: "./ami_id.sh").trim()
