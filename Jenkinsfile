@@ -28,6 +28,7 @@ pipeline {
         sh "echo ${env.ARTIFACTOR}"
         sh "echo ${env.SLACK_MESSAGE}"
         sh "echo ${env.BRANCH_NAME}"
+        sh "echo ${env.GIT_BRANCH}"
         sh "touch ${ARTIFACTOR}"
         script {
           def AMI_ID = sh(returnStdout: true, script: "./ami_id.sh").trim()
