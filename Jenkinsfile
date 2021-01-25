@@ -8,7 +8,7 @@ pipeline {
   environment {
     ARTIFACTOR = "${env.BUILD_NUMBER}.zip"
     SLACK_MESSAGE = "Job '${env.JOB_NAME}' Build ${env.BUILD_NUMBER}"
-    MY_BRANCH = "${env.GIT_BRANCH}".split("/")[1]
+    MY_BRANCH = "${env.GIT_BRANCH}.split('/')[1]"
   }
   parameters {
     string(name: 'SLACK_CHANNEL', defaultValue: '#deploys', description: '')
